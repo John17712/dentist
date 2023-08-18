@@ -1,8 +1,6 @@
 import os
 from pathlib import Path
-import django_heroku
-import dj_database_url
-from decouple import config
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -17,7 +15,7 @@ SECRET_KEY = 'django-insecure-9-&s^p^3&#smfa+!@i$u)k5zkebdpeceuh($v@dwp%pm4g^2s4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -41,7 +39,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'dentist.urls'
@@ -112,11 +110,16 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATIC_ROOT  = os.path.join(BASE_DIR, 'staticfiles')
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
+
 ]
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -129,9 +132,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'johnitezmwas9@gmail.com'
-EMAIL_HOST_PASSWORD = 'ebfqsvfmutqydsfm'
+EMAIL_HOST_PASSWORD = 'rcjzzmobrhslatcj'
 EMAIL_USE_TLS = True
 
 
 
-django_heroku.settings(locals())

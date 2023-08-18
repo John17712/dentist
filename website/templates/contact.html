@@ -10,7 +10,7 @@
     <meta content="Free HTML Templates" name="description">
 
     <!-- Favicon -->
-    <link href="% static 'website/img/favicon.ico' %}" rel="icon">
+    <link href="{% static 'website/img/favicon.ico' %}" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -82,9 +82,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto py-0">
-                <a href="home.html" class="nav-item nav-link">Home</a>
+                <a href="index.html" class="nav-item nav-link">Home</a>
                 <a href="about.html" class="nav-item nav-link">About</a>
                 <a href="service.html" class="nav-item nav-link">Service</a>
+                <a href="price.html" class="nav-item nav-link">Pricing</a>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                     <div class="dropdown-menu m-0">
@@ -96,7 +97,6 @@
                 </div>
                 <a href="contact.html" class="nav-item nav-link active">Contact</a>
             </div>
-            <button type="button" class="btn text-dark" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></button>
             <a href="appointment.html" class="btn btn-primary py-2 px-4 ms-3">Appointment</a>
         </div>
     </nav>
@@ -135,13 +135,14 @@
     </div>
     <!-- Hero End -->
     
-{% if message_name %}
+{% if your_name %}
 <center>
-    <h2>Thanks {{ message_name }}!</h2>
+    <h2>Thanks {{ your_name }}!</h2>
     <p>We received your email and will respond shortly</p>
 </center>
 <br/><br/><br/>
 {% else %}
+
     <!-- Contact Start -->
     <div class="container-fluid py-5">
         <div class="container">
@@ -183,17 +184,17 @@
                         {% csrf_token %}
                         <div class="row g-3">
                             <div class="col-12">
-                                <input type="text" name='message-name' class="form-control border-0 bg-light px-4" placeholder="Your Name" style="height: 55px;">
+                                <input type="text" name='your-name' class="form-control border-0 bg-light px-4" placeholder="Your Name" style="height: 55px;" required>
                             </div>
                             <div class="col-12">
-                                <input type="email" name='message-email'class="form-control border-0 bg-light px-4" placeholder="Your Email" style="height: 55px;">
+                                <input type="email" name='your-email'class="form-control border-0 bg-light px-4" placeholder="Your Email" style="height: 55px;" required>
                             </div>
                             <div class="col-12">
-                                <input type="text" name='message-subject' class="form-control border-0 bg-light px-4" placeholder="Subject" style="height: 55px;">
+                                <input type="text" name='message-subject' class="form-control border-0 bg-light px-4" placeholder="Subject" style="height: 55px;" required>
                             
                             </div>
                             <div class="col-12">
-                                <textarea name='message' class="form-control border-0 bg-light px-4 py-3" rows="5" placeholder="Message"></textarea>
+                                <textarea name='your-message' class="form-control border-0 bg-light px-4 py-3" rows="5" placeholder="Message" required></textarea>
                             </div>
                             <div class="col-12">
                                 <button class="btn btn-primary w-100 py-3" type="submit">Send Message</button>
