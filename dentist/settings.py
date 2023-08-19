@@ -1,6 +1,8 @@
 import os
 from pathlib import Path
-
+import django_heroku
+import dj_database_url
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -28,10 +30,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'website',
+    'django_heroku',
 
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -118,8 +122,7 @@ STATICFILES_DIRS = [
 ]
 
 
-
-
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -136,4 +139,7 @@ EMAIL_HOST_PASSWORD = 'rcjzzmobrhslatcj'
 EMAIL_USE_TLS = True
 
 
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
 
